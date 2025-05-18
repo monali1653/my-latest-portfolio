@@ -5,7 +5,6 @@ import Home from './components/Home';
 import { ThemeProvider } from './components/ThemeContext';
 import Contact from './components/Contact';
 import './App.css'
-import './index.css'
 import Footer from './components/Footer';
 import LandingPage from './components/LandingPage';
 

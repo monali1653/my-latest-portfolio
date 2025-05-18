@@ -1,15 +1,2 @@
 @import "tailwindcss";
-/* Add this comment at the top of your CSS file */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-/* tailwindcss safelist */
-@layer utilities {
-  .bg-blue-900 {}
-  .text-white {}
-  .hover\:bg-blue-800:hover {}
-  .bg-blue-100 {}
-  .text-blue-900 {}
-  .hover\:bg-blue-200:hover {}
-}
