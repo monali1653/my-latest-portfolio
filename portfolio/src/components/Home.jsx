@@ -74,8 +74,8 @@ const Home = () => {
   <motion.a
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
-    href="#contact"
     className="flex items-center gap-3 bg-blue-100 text-blue-900 px-6 py-3 rounded-full hover:bg-blue-200 transition duration-300 min-w-[150px] justify-center"
+    style={{ fontFamily: "Signika Negative, sans-serif" }}
   >
     Hire Me
     <span className="bg-blue-900 text-white p-1 rounded-full">
