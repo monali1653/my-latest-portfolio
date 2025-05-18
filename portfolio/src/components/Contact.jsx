@@ -1,12 +1,29 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Github, Linkedin, Mail, Home, Share2 } from "lucide-react";
-import { Link } from "react-router-dom";
-import ThemeContext from "./ThemeContext";
 import { motion } from "framer-motion";
+import ThemeContext from "./ThemeContext";
 
 const Contact = () => {
   const { darkMode } = useContext(ThemeContext);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [clicked, setClicked] = useState(false);
+
+  // Detect screen size for mobile vs desktop
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize(); // initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleIcons = () => {
+    if (isMobile) {
+      setClicked((prev) => !prev);
+    }
+  };
 
   const scrollToHome = () => {
     const homeSection = document.getElementById("home");
@@ -29,32 +46,44 @@ const Contact = () => {
       link: "mailto:monalisasamal1653@gmail.com",
     },
     {
-      icon: <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp" width={32} height={32} />,
+      icon: (
+        <img
+          src="https://img.icons8.com/color/48/whatsapp--v1.png"
+          alt="WhatsApp"
+          width={32}
+          height={32}
+        />
+      ),
       link: "https://wa.me/8328819363",
     },
   ];
 
+  const showIcons = isMobile ? clicked : isHovered;
+
   return (
     <div
-  className={`${
-    darkMode ? "bg-[#0f172a] text-white" : "bg-white text-black"
-  } pt-10 pb-20 px-6 md:px-20 flex flex-col items-center justify-center`}
->
-
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-10" style={{ fontFamily: "EB Garamond, serif" }}>
+      className={`${
+        darkMode ? "bg-[#0f172a] text-white" : "bg-white text-black"
+      } pt-10 pb-20 px-6 md:px-20 flex flex-col items-center justify-center`}
+    >
+      <h1
+        className="text-3xl md:text-4xl font-bold text-center mb-10"
+        style={{ fontFamily: "EB Garamond, serif" }}
+      >
         Get in touch!
       </h1>
 
       {/* Circular Share Icon Center */}
       <div
         className="relative w-60 h-60 flex items-center justify-center"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={() => !isMobile && setIsHovered(true)}
+        onMouseLeave={() => !isMobile && setIsHovered(false)}
+        onClick={toggleIcons}
       >
         {/* Social Icons in Circular Layout */}
         {icons.map((item, index) => {
           const angle = (index / icons.length) * (2 * Math.PI);
-          const radius = isHovered ? 100 : 0;
+          const radius = showIcons ? 100 : 0;
 
           const x = radius * Math.cos(angle);
           const y = radius * Math.sin(angle);
@@ -69,7 +98,7 @@ const Contact = () => {
               animate={{
                 x,
                 y,
-                opacity: isHovered ? 1 : 0,
+                opacity: showIcons ? 1 : 0,
                 transition: { type: "spring", stiffness: 400, damping: 20 },
               }}
               className="absolute"
@@ -91,13 +120,11 @@ const Contact = () => {
           style={{
             backgroundColor: darkMode ? "#1e293b" : "#e2e8f0",
           }}
-          whileHover={{ scale: 1.2 }}
+          whileHover={!isMobile ? { scale: 1.2 } : {}}
         >
           <Share2 size={30} />
         </motion.div>
       </div>
-
-      
 
       {/* Home Icon */}
       <motion.button
