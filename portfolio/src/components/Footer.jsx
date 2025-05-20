@@ -8,16 +8,13 @@ const Footer = () => {
     <footer
       className={`${
         darkMode ? "bg-[#0f172a] text-white" : "bg-gray-200 text-black"
-      } text-center py-6`}
+      } text-center py-6 pb-16 sm:pb-6`} // <-- added pb-16 for mobile, sm:pb-6 for larger screens
     >
-      
-<hr className="mt-6 mx-auto w-3/4 border-t border-gray-400 dark:border-gray-600" />
+      <hr className="mt-6 mx-auto w-3/4 border-t border-gray-400 dark:border-gray-600" />
+
       <p className="mt-3" style={{ fontFamily: 'Signika Negative, sans-serif' }}>
         Made with <span className="text-blue-500 text-xl">💙</span> in India
       </p>
-
-      {/* Horizontal line */}
-      
 
       <p className="text-sm mt-1" style={{ fontFamily: 'Signika Negative, sans-serif' }}>
         © 2025 – All rights reserved.
