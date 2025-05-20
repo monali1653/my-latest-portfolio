@@ -4,6 +4,7 @@ import Home from "./Home";
 import Contact from "./Contact";
 import Projects from "./Projects";
 import Skills from "./Skills";
+import About from "./About";
 
 
 const LandingPage = () => {
@@ -15,6 +16,11 @@ const LandingPage = () => {
           <li>
             <Link to="home" smooth={true} duration={500}>
               Home
+            </Link>
+          </li>
+          <li>
+            <Link to="about" smooth={true} duration={500}>
+              About
             </Link>
           </li>
           <li>
@@ -38,6 +44,10 @@ const LandingPage = () => {
       {/* Home Section */}
       <section id="home">
         <Home />
+      </section>
+
+      <section id="about">
+        <About />
       </section>
 
  <section id="skills">

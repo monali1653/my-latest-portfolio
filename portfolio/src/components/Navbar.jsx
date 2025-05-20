@@ -1,5 +1,15 @@
 import { useState } from "react";
-import { Menu, X, Sun, Moon, Home, Contact, Briefcase, Code2 } from "lucide-react";
+import {
+  Menu,
+  X,
+  Sun,
+  Moon,
+  Home,
+  Contact,
+  Briefcase,
+  Code2,
+  User2, // added icon for About
+} from "lucide-react";
 import { useTheme } from "./ThemeContext";
 
 const Navbar = () => {
@@ -16,6 +26,7 @@ const Navbar = () => {
 
   const navItems = [
     { id: "home", label: "Home", icon: <Home size={22} /> },
+    { id: "about", label: "About", icon: <User2 size={22} /> }, // new About section
     { id: "skills", label: "Skills", icon: <Code2 size={22} /> },
     { id: "projects", label: "Projects", icon: <Briefcase size={22} /> },
     { id: "contact", label: "Contact", icon: <Contact size={22} /> },
@@ -29,7 +40,9 @@ const Navbar = () => {
           darkMode ? "bg-[#0f172a] text-white" : "bg-white text-black"
         }`}
       >
-        <h1 className="text-lg font-semibold" style={{fontFamily: 'Dancing Script, cursive'}}>My Portfolio</h1>
+        <h1 className="text-lg font-semibold" style={{ fontFamily: 'Dancing Script, cursive' }}>
+          My Portfolio
+        </h1>
         <button onClick={toggleTheme}>
           {darkMode ? (
             <Sun className="w-6 h-6 text-yellow-400" />
@@ -49,7 +62,6 @@ const Navbar = () => {
           <button onClick={() => setIsOpen(!isOpen)}>
             <Menu className="w-6 h-6" />
           </button>
-          {/* Removed "My Portfolio" text */}
           <button onClick={toggleTheme}>
             {darkMode ? (
               <Sun className="w-6 h-6 text-yellow-400" />
@@ -77,10 +89,9 @@ const Navbar = () => {
                   <button
                     onClick={() => scrollToSection(id)}
                     className={`w-full flex items-center gap-2 text-left px-2 py-2 rounded-md transition-colors duration-200 ${
-                      darkMode
-                        ? "hover:bg-gray-700"
-                        : "hover:bg-gray-300"
-                    }`}  style={{fontFamily:'Signika Negative, sans-serif'}}
+                      darkMode ? "hover:bg-gray-700" : "hover:bg-gray-300"
+                    }`}
+                    style={{ fontFamily: 'Signika Negative, sans-serif' }}
                   >
                     {icon}
                     <span>{label}</span>
@@ -102,7 +113,8 @@ const Navbar = () => {
           <button
             key={id}
             onClick={() => scrollToSection(id)}
-            className="flex flex-col items-center px-3 py-1 group" style={{fontFamily:'Signika Negative, sans-serif'}}
+            className="flex flex-col items-center px-3 py-1 group"
+            style={{ fontFamily: 'Signika Negative, sans-serif' }}
           >
             {icon}
             <span
