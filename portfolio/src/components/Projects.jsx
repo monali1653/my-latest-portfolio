@@ -21,8 +21,8 @@ const projectsData = [
     {
         title: 'My Portfolio',
         description: 'A sleek frontend page showcasing my skills and projects using React.js.',
-        demoLink: '#',
-        githubLink: '#',
+        demoLink: 'https://my-latest-portfolio-rouge.vercel.app/',
+        githubLink: 'https://github.com/monali1653/my-latest-portfolio.git',
         image: '/images/portfolio.png',
     },
 ];
