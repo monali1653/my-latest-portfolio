@@ -88,7 +88,7 @@ const Home = () => {
 
         {/* Animated Bouncing Image */}
         <motion.div
-          className="mt-8"
+          className="mt-20"
           animate={{ y: [0, -20, 0] }}
           transition={{
             duration: 2,
