@@ -14,6 +14,7 @@ import { useTheme } from "./ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeId, setActiveId] = useState("home"); // track active clicked item
   const { darkMode, toggleTheme } = useTheme();
 
   const scrollToSection = (id) => {
@@ -21,6 +22,7 @@ const Navbar = () => {
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
+      setActiveId(id); // set active when clicked
     }
   };
 
@@ -40,7 +42,10 @@ const Navbar = () => {
           darkMode ? "bg-[#0f172a] text-white" : "bg-white text-black"
         }`}
       >
-        <h1 className="text-lg font-semibold" style={{ fontFamily: 'Dancing Script, cursive' }}>
+        <h1
+          className="text-lg font-semibold"
+          style={{ fontFamily: "Dancing Script, cursive" }}
+        >
           My Portfolio
         </h1>
         <button onClick={toggleTheme}>
@@ -91,7 +96,7 @@ const Navbar = () => {
                     className={`w-full flex items-center gap-2 text-left px-2 py-2 rounded-md transition-colors duration-200 ${
                       darkMode ? "hover:bg-gray-700" : "hover:bg-gray-300"
                     }`}
-                    style={{ fontFamily: 'Signika Negative, sans-serif' }}
+                    style={{ fontFamily: "Signika Negative, sans-serif" }}
                   >
                     {icon}
                     <span>{label}</span>
@@ -113,14 +118,14 @@ const Navbar = () => {
           <button
             key={id}
             onClick={() => scrollToSection(id)}
-            className="flex flex-col items-center px-3 py-1 group"
-            style={{ fontFamily: 'Signika Negative, sans-serif' }}
+            className="flex flex-col items-center px-3 py-1"
+            style={{ fontFamily: "Signika Negative, sans-serif" }}
           >
             {icon}
             <span
-              className={`text-xs mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                darkMode ? "text-white" : "text-black"
-              }`}
+              className={`text-xs mt-1 transition-opacity duration-300 ${
+                activeId === id ? "opacity-100" : "opacity-0"
+              } ${darkMode ? "text-white" : "text-black"}`}
             >
               {label}
             </span>

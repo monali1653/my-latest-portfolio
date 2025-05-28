@@ -20,10 +20,7 @@ const Contact = () => {
   }, []);
 
   const toggleIcons = () => {
-    if (isMobile) {
-      // On mobile, clicking the center icon opens WhatsApp directly
-      window.open("https://wa.me/8328819363", "_blank");
-    } else {
+    if (!isMobile) {
       // On desktop, toggle icons visibility
       setClicked((prev) => !prev);
     }
@@ -62,7 +59,9 @@ const Contact = () => {
     },
   ];
 
-  const showIcons = isMobile ? clicked : isHovered;
+  // For mobile: always show icons (no toggle)
+  // For desktop: show on hover or click toggle
+  const showIcons = isMobile || (!isMobile && (isHovered || clicked));
 
   return (
     <div
@@ -87,6 +86,7 @@ const Contact = () => {
         {/* Social Icons in Circular Layout */}
         {icons.map((item, index) => {
           const angle = (index / icons.length) * (2 * Math.PI);
+          // For mobile show full radius, desktop toggle radius
           const radius = showIcons ? 100 : 0;
 
           const x = radius * Math.cos(angle);
