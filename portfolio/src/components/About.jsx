@@ -21,7 +21,7 @@ const About = () => {
         className="text-4xl font-bold text-center mb-10"
         style={{ fontFamily: 'EB Garamond, serif' }}
       >
-        My Journey So Far
+        My Journey So Far!
       </motion.h1>
 
       <div
@@ -53,12 +53,20 @@ const About = () => {
           </div>
 
           {/* Content */}
-          <div className="order-2 sm:order-1 w-full sm:w-1/2 pr-0 sm:pr-10 text-center sm:text-right">
-            <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: "Signika Negative, sans-serif" }}>Education</h3>
+          <div
+            className={`order-2 sm:order-1 w-full sm:w-1/2 pr-0 sm:pr-10 text-center sm:text-right`}
+          >
+            <h3
+              className="text-2xl font-semibold mb-4"
+              style={{ fontFamily: 'Signika Negative, sans-serif' }}
+            >
+              Education
+            </h3>
             <div
               className={`${
                 darkMode ? 'bg-[#1f2937]' : 'bg-gray-100'
-              } p-6 rounded-lg inline-block` } style={{ fontFamily: "Signika Negative, sans-serif" }}
+              } p-6 rounded-lg inline-block border border-white transition-shadow duration-300 hover:shadow-[0_6px_12px_-4px_rgba(96,165,250,0.7)]`}
+              style={{ fontFamily: 'Signika Negative, sans-serif' }}
             >
               <h2 className="text-xl font-semibold">B.Tech in Computer Science</h2>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
@@ -94,12 +102,20 @@ const About = () => {
           </div>
 
           {/* Content */}
-          <div className="order-2 sm:order-1 w-full sm:w-1/2 pl-0 sm:pl-10 text-center sm:text-left">
-            <h3 className="text-2xl font-semibold mb-4 " style={{ fontFamily: "Signika Negative, sans-serif" }}>Achievements</h3>
+          <div
+            className={`order-2 sm:order-1 w-full sm:w-1/2 pl-0 sm:pl-10 text-center sm:text-left`}
+          >
+            <h3
+              className="text-2xl font-semibold mb-4 "
+              style={{ fontFamily: 'Signika Negative, sans-serif' }}
+            >
+              Achievements
+            </h3>
             <div
               className={`${
                 darkMode ? 'bg-[#1f2937]' : 'bg-gray-100'
-              } p-6 rounded-lg inline-block`} style={{ fontFamily: "Signika Negative, sans-serif" }}
+              } p-6 rounded-lg inline-block border border-white transition-shadow duration-300 hover:shadow-[0_6px_12px_-4px_rgba(96,165,250,0.7)]`}
+              style={{ fontFamily: 'Signika Negative, sans-serif' }}
             >
               <h2 className="text-xl font-semibold">UBS Hackathon Participant</h2>
               <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
