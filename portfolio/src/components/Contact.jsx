@@ -21,6 +21,10 @@ const Contact = () => {
 
   const toggleIcons = () => {
     if (isMobile) {
+      // On mobile, clicking the center icon opens WhatsApp directly
+      window.open("https://wa.me/8328819363", "_blank");
+    } else {
+      // On desktop, toggle icons visibility
       setClicked((prev) => !prev);
     }
   };
@@ -129,7 +133,8 @@ const Contact = () => {
       {/* Home Icon */}
       <motion.button
         onClick={scrollToHome}
-        className="fixed bottom-4 right-4 bg-indigo-400 p-3 rounded-full text-white shadow-md"
+        className="fixed right-4 bg-indigo-400 p-3 rounded-full text-white shadow-md"
+        style={{ bottom: isMobile ? "70px" : "16px" }} // lifted up on mobile
         whileHover={{ scale: 1.1, rotate: [0, 5, -5, 5, -5, 0] }}
         transition={{ duration: 0.6 }}
       >

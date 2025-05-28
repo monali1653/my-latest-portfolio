@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -44,9 +44,32 @@ const Skills = () => {
   // Detect if device is touch-capable (mobile/tablet)
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
+  // Ref for the container to detect outside clicks
+  const containerRef = useRef(null);
+
   useEffect(() => {
     setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
   }, []);
+
+  // Close tooltip on outside click (for mobile)
+  useEffect(() => {
+    if (!isTouchDevice) return;
+
+    const handleOutsideClick = (event) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        setClickedIndex(null);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [isTouchDevice]);
 
   // Motion value for tracking horizontal mouse position inside icon
   const x = useMotionValue(0);
@@ -123,7 +146,10 @@ const Skills = () => {
 
   return (
     <div
-      ref={ref} // attach observer ref here
+      ref={(node) => {
+        ref(node); // for intersection observer
+        containerRef.current = node; // for outside click detection
+      }}
       className={`${
         darkMode ? "bg-[#0f172a] text-white" : "bg-white text-black"
       } min-h-screen pt-20 px-6 md:px-20 flex flex-col items-center`}

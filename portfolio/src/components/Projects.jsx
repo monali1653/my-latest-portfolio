@@ -69,7 +69,7 @@ const Projects = () => {
                             onClick={(e) => e.stopPropagation()}
                             className="absolute top-4 right-4 bg-white/80 dark:bg-black/80 rounded-full p-2 shadow-md hover:bg-white dark:hover:bg-black z-20"
                         >
-                            <ArrowUpRight size={20} className={`${darkMode ? 'text-white' : 'text-black'}`} />
+                            <ArrowUpRight size={20} className="text-white" />
                         </a>
 
                         <img

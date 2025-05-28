@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useTheme } from './ThemeContext';
 
 const About = () => {
   const { darkMode } = useTheme();
+  const [isMobile, setIsMobile] = useState(false);
+  const [clickedBox, setClickedBox] = useState(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    handleResize(); // set initially
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleBoxClick = (index) => {
+    if (isMobile) {
+      setClickedBox(index === clickedBox ? null : index);
+    }
+  };
+
+  const getBoxClass = (index) => {
+    const baseClasses = 'border p-6 rounded-lg inline-block transition-shadow duration-300';
+    const themeClasses = darkMode ? 'bg-[#1f2937] border-white' : 'bg-gray-100 border-black';
+    const shadowClass =
+      isMobile && clickedBox === index
+        ? 'shadow-[0_6px_12px_-4px_rgba(59,130,246,0.7)]'
+        : !isMobile
+        ? 'hover:shadow-[0_6px_12px_-4px_rgba(59,130,246,0.7)]'
+        : '';
+
+    return `${baseClasses} ${themeClasses} ${shadowClass}`;
+  };
 
   return (
     <motion.div
@@ -24,11 +54,7 @@ const About = () => {
         My Journey So Far!
       </motion.h1>
 
-      <div
-        className={`relative ${
-          darkMode ? 'border-gray-700' : 'border-gray-300'
-        } ml-6 sm:ml-1`}
-      >
+      <div className={`relative ${darkMode ? 'border-gray-700' : 'border-gray-300'} ml-6 sm:ml-1`}>
         {/* Education */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -54,7 +80,8 @@ const About = () => {
 
           {/* Content */}
           <div
-            className={`order-2 sm:order-1 w-full sm:w-1/2 pr-0 sm:pr-10 text-center sm:text-right`}
+            className="order-2 sm:order-1 w-full sm:w-1/2 pr-0 sm:pr-10 text-center sm:text-right"
+            onClick={() => handleBoxClick(0)}
           >
             <h3
               className="text-2xl font-semibold mb-4"
@@ -63,15 +90,11 @@ const About = () => {
               Education
             </h3>
             <div
-              className={`${
-                darkMode ? 'bg-[#1f2937]' : 'bg-gray-100'
-              } p-6 rounded-lg inline-block border border-white transition-shadow duration-300 hover:shadow-[0_6px_12px_-4px_rgba(96,165,250,0.7)]`}
+              className={getBoxClass(0)}
               style={{ fontFamily: 'Signika Negative, sans-serif' }}
             >
               <h2 className="text-xl font-semibold">B.Tech in Computer Science</h2>
-              <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                2022-2026
-              </p>
+              <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>2022-2026</p>
               <p>Veer Surendra Sai University Of Technology</p>
               <p>CGPA: 8.97</p>
             </div>
@@ -103,24 +126,21 @@ const About = () => {
 
           {/* Content */}
           <div
-            className={`order-2 sm:order-1 w-full sm:w-1/2 pl-0 sm:pl-10 text-center sm:text-left`}
+            className="order-2 sm:order-1 w-full sm:w-1/2 pl-0 sm:pl-10 text-center sm:text-left"
+            onClick={() => handleBoxClick(1)}
           >
             <h3
-              className="text-2xl font-semibold mb-4 "
+              className="text-2xl font-semibold mb-4"
               style={{ fontFamily: 'Signika Negative, sans-serif' }}
             >
               Achievements
             </h3>
             <div
-              className={`${
-                darkMode ? 'bg-[#1f2937]' : 'bg-gray-100'
-              } p-6 rounded-lg inline-block border border-white transition-shadow duration-300 hover:shadow-[0_6px_12px_-4px_rgba(96,165,250,0.7)]`}
+              className={getBoxClass(1)}
               style={{ fontFamily: 'Signika Negative, sans-serif' }}
             >
               <h2 className="text-xl font-semibold">UBS Hackathon Participant</h2>
-              <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                April 3–4, 2025
-              </p>
+              <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>April 3–4, 2025</p>
               <ul className="list-disc ml-5 mt-2">
                 <li>
                   Selected through a national-level test to develop{' '}
