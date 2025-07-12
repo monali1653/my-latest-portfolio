@@ -73,7 +73,7 @@ const Home = () => {
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            href="https://drive.google.com/file/d/1rSVDmoS3M1Q2UnnfPr4ORU3sFbbxcbyX/view?usp=sharing"
+            href="https://drive.google.com/file/d/1ffsCTx5UaXuxTrqsIp3nnwXTEycS5tmC/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 bg-blue-900 text-white px-6 py-3 rounded-full hover:bg-blue-800 transition duration-300 min-w-[150px] justify-center"
