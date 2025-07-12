@@ -5,16 +5,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const projectsData = [
     {
-        title: 'Mona Florals',
-        description: 'A landing page for florals built using HTML and CSS.',
-        demoLink: 'https://monali1653.github.io/PRODIGY_WD_01/',
-        githubLink: 'https://github.com/monali1653/PRODIGY_WD_01.git',
-        image: '/images/flower.png',
+        title: 'Todo App',
+        description: ' A task manager app with add,edit,delete and local storage for data persistence.',
+        demoLink: 'https://todo-delta-cyan-16.vercel.app/',
+        githubLink: 'https://github.com/monali1653/Todo.git',
+        image: '/images/todoo.jpg',
     },
     {
         title: 'Book Website',
         description: 'A marketplace for users to buy/sell books built in React.js.',
-        demoLink: '#',
+        demoLink: 'https://book-cart-rho.vercel.app',
         githubLink: '#',
         image: '/images/boook.png',
     },
